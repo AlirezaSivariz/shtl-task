@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import loginReducer from "@/redux/slice/loginSlice";
-loginReducer;
+import commentsSlice from "./slice/commentsSlice";
 const store = configureStore({
   reducer: {
     login: loginReducer,
+    comments: commentsSlice,
   },
 });
 

@@ -1,21 +1,19 @@
+// ProfilePage.js
 import React from "react";
 import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
-import { useSelector } from "react-redux";
+import CardList from "@/components/cardList";
+
 const ProfilePage = () => {
   const SectionTitle = styled(Typography)(({ theme }) => ({
     marginBottom: theme.spacing(2),
     fontWeight: "bold",
   }));
 
-  const isLoggedIn = useSelector((state) => state.login);
-
-  console.log("isLoggedIn", isLoggedIn);
   return (
     <Box sx={{ padding: 16 }}>
       <Grid container spacing={2}>
@@ -61,6 +59,9 @@ const ProfilePage = () => {
               <br />- React.js
             </Typography>
           </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <CardList />
         </Grid>
       </Grid>
     </Box>

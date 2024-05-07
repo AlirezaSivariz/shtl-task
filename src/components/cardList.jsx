@@ -1,4 +1,7 @@
+// CardList.js
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   Card,
   CardContent,
@@ -9,6 +12,8 @@ import {
   Box,
 } from "@mui/material";
 import Image from "next/image";
+import { addComment } from "@/redux/slice/commentsSlice";
+import { toast } from "react-toastify";
 
 const CustomCard = ({ logoSrc, title, description }) => {
   return (
@@ -36,23 +41,12 @@ const CustomCard = ({ logoSrc, title, description }) => {
 };
 
 const CardList = () => {
+  const dispatch = useDispatch();
+  const comments = useSelector((state) => state.comments);
+
   const [showTextField, setShowTextField] = useState(false);
   const [newCardTitle, setNewCardTitle] = useState("");
   const [newCardDescription, setNewCardDescription] = useState("");
-  const [cards, setCards] = useState([
-    {
-      logoSrc: "/assets/User.svg",
-      title: "Card 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo, metus vitae condimentum interdum, turpis ipsum venenatis ex, non tincidunt ante neque sit amet mauris.",
-    },
-    {
-      logoSrc: "/assets/User.svg",
-      title: "Card 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo, metus vitae condimentum interdum, turpis ipsum venenatis ex, non tincidunt ante neque sit amet mauris.",
-    },
-  ]);
 
   const handleButtonClick = () => {
     setShowTextField(true);
@@ -66,17 +60,18 @@ const CardList = () => {
         description: newCardDescription,
       };
 
-      setCards((prevCards) => [...prevCards, newCard]);
+      dispatch(addComment(newCard));
       setNewCardTitle("");
       setNewCardDescription("");
       setShowTextField(false);
+      toast.success("Go To Home Page");
     }
   };
 
   return (
     <Box sx={{ mt: 5 }}>
       <Grid container spacing={2}>
-        {cards.map((card, index) => (
+        {comments.map((card, index) => (
           <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
             <CustomCard {...card} />
           </Grid>
