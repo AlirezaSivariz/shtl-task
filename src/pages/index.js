@@ -1,9 +1,8 @@
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
+import LandingSection from "@/sections/landingSection";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import Login from "./register/login";
-import Navbar from "@/components/navbar";
-import LandingSection from "@/components/landingSection";
-import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

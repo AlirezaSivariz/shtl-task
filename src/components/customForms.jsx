@@ -5,28 +5,14 @@ import {
   FormControlLabel,
   Grid,
   InputLabel,
-  MenuItem,
-  Select,
-  TextField,
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import TextFieldComponent from "./textFields";
 
-const CustomForm = ({
-  fields,
-  dir = "rtl",
-  fieldsEdit,
-  onSubmit,
-  validationSchema,
-  sizeBtn,
-  textBtn = "ورود",
-  data,
-  disabledButton,
-  permission,
-}) => {
+const CustomForm = ({ fields, onSubmit, validationSchema, data }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -77,11 +63,11 @@ const CustomForm = ({
       <form onSubmit={handleSubmit(handleFormSubmit)} autoComplete="off">
         <Grid container spacing={2}>
           {fields?.map((field, index) => (
-            <Grid item sm={field.col || 12} key={index}>
+            <Grid item xs={field.col || 12} key={index}>
               <StyledInputLabel shrink sx={{ mt: 2, fontSize: 18 }}>
                 {field.label}
               </StyledInputLabel>
-              <Grid item sm={12} key={index}>
+              <Grid item xs={12} key={index}>
                 {renderField(field)}
               </Grid>
             </Grid>

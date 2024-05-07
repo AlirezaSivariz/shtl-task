@@ -1,16 +1,7 @@
-import React from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { TiTick } from "react-icons/ti";
-import CardList from "./cardList";
+import CardList from "../components/cardList";
 
 const LandingSection = () => {
   const imageArray = Array.from({ length: 5 });
@@ -31,6 +22,8 @@ const LandingSection = () => {
               justifyContent: "space-between",
               padding: "0 24px",
               "@media (max-width: 768px)": {
+                backgroundImage: "none",
+
                 flexDirection: "column",
                 backgroundPosition: "center",
                 backgroundSize: "cover",
@@ -145,7 +138,7 @@ const LandingSection = () => {
       </Box>
       <Container sx={{ mt: 5 }}>
         <Box component="section" sx={{ mb: 5 }}>
-          <Box sx={{ width: "50%" }}>
+          <Box sx={{ md: { width: "50%" } }}>
             <Typography variant="body2" component="p" color="secondary">
               Why Fiber
             </Typography>

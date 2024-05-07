@@ -11,10 +11,13 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { TiThMenu } from "react-icons/ti";
+import useAuthValidation from "@/hooks/useAuthValidation";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
+  const { token, isLoading } = useAuthValidation();
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -27,7 +30,13 @@ const Navbar = () => {
   return (
     <AppBar
       position="static"
-      sx={{ flexGrow: 1, bgcolor: "transparent", color: "#000" }}
+      sx={{
+        flexGrow: 1,
+        bgcolor: "transparent",
+        color: "#000",
+        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+        mb: "1px",
+      }}
     >
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -51,7 +60,7 @@ const Navbar = () => {
           variant="contained"
           color="primary"
         >
-          Login
+          {token ? "Log Out" : "Login"}
         </Button>
         <Box sx={{ display: { xs: "flex", sm: "none" }, alignItems: "center" }}>
           <IconButton
@@ -60,7 +69,7 @@ const Navbar = () => {
             onClick={toggleDrawer}
             sx={{ display: { xs: "block", sm: "none" } }}
           >
-            {/* <MenuIcon /> */} 88
+            <TiThMenu />
           </IconButton>
         </Box>
         <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer}>

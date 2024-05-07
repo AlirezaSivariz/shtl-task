@@ -1,12 +1,10 @@
 import CustomForm from "@/components/customForms";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { Container, Grid, Paper, Typography } from "@mui/material";
 import Image from "next/image";
-import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
-import { useRouter } from "next/router";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
