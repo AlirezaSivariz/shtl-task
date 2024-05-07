@@ -46,11 +46,11 @@ const Navbar = () => {
           <Box
             sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center" }}
           >
-            <Link href="/page1">
-              <Button color="inherit">Page 1</Button>
+            <Link href="/">
+              <Button color="inherit">Home</Button>
             </Link>
-            <Link href="/page2">
-              <Button color="inherit">Page 2</Button>
+            <Link href="/profile">
+              <Button color="inherit">Profile</Button>
             </Link>
           </Box>
         </Box>

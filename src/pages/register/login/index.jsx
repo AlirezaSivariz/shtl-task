@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "@/redux/slice/loginSlice";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -18,7 +20,7 @@ const schema = yup.object().shape({
 
 export default function Login() {
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const fields = [
     {
       label: "Your Name",
@@ -48,8 +50,9 @@ export default function Login() {
       toast.error("Username must be admin");
     } else {
       localStorage.setItem("username", data.name);
+      dispatch(loginSuccess(data));
       toast.success("You have entered successfully");
-      router.reload();
+      router.push("/profile");
     }
   };
 
