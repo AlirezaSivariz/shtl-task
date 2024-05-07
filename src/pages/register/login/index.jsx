@@ -52,7 +52,7 @@ export default function Login() {
       localStorage.setItem("username", data.name);
       dispatch(loginSuccess(data));
       toast.success("You have entered successfully");
-      router.push("/profile");
+      router.reload();
     }
   };
 
